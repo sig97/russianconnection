@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+
+	}
+	repositories {
+		mavenCentral()
+		mavenLocal()
+	}
+	dependencies {
+
+	}
+}
+
+apply plugin: 'idea'
+
+
+
+repositories {
+	mavenCentral()
+}
+
+subprojects {
+	version = '0.0.1-SNAPSHOT'
+	group 'com.findout.slurper'
+	apply plugin: 'java'
+}
+
+project(':api') {
+	dependencies {
+		compile project(':apiclient')
+	}
+}
+
+
+//test {
+//	exclude '**/integration/**'
+//	exclude '**/excluded/**'
+//}
+//
+//task integrationTest(type: Test) {
+//	include '**/integration/**'
+//}

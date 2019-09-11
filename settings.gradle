@@ -1,0 +1,6 @@
+rootProject.name = 'russianconnection'
+include 'bigpipe'
+include 'api'
+include 'apiclient'
+include 'rabbit'
+

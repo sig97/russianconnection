@@ -1,0 +1,35 @@
+version: '2'
+services:
+
+  slurper-api:
+    build:
+      context: api
+    ports:
+      - "7878:7878"
+    depends_on:
+      - rabbitmq
+      - slurper-bigpipe
+    links:
+      - rabbitmq
+      - slurper-bigpipe
+    network_mode: "bridge"
+    command: java -jar -Dspring.profiles.active=localdocker /data/api.jar
+
+  slurper-bigpipe:
+    build:
+      context: bigpipe
+    ports:
+      - "7979:7979"
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+    network_mode: "bridge"
+    command: java -jar -Dspring.profiles.active=localdocker /data/slurper.jar
+
+  rabbitmq:
+    image: rabbitmq:3.6.9-management
+    network_mode: "bridge"
+    ports:
+      - "5672:5672"
+      - "15672:15672"

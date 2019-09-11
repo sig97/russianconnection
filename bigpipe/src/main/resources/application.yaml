@@ -1,0 +1,36 @@
+
+
+info:
+  app:
+    name: com.findout.slurper.api.russianconnection
+
+spring:
+  profiles.active: local
+  rabbitmq:
+      addresses: localhost
+      port: 5672
+
+logging:
+  level:
+    com.findout.softwarefactory.russianconnection: DEBUG
+
+management:
+  endpoint:
+    web:
+#      base-path: /
+      exposure:
+          include: health,info,env,metrics
+
+server:
+  port: 7979
+  servlet:
+    context-path: /bigpipe/
+
+---
+
+spring:
+  profiles: localdocker
+
+  rabbitmq:
+    addresses: rabbitmq
+    port: 5672
