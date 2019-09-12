@@ -6,6 +6,7 @@ services:
       context: api
     ports:
       - "7878:7878"
+      - "8001:8000"
     depends_on:
       - rabbitmq
       - slurper-bigpipe
@@ -20,6 +21,7 @@ services:
       context: bigpipe
     ports:
       - "7979:7979"
+      - "8002:8000"
     depends_on:
       - rabbitmq
     links:
